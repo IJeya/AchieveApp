@@ -11,13 +11,19 @@ public class IncDecPanel extends JPanel {
     private JLabel jLabel;
     private JButton plus;
     private JButton minus;
+    private CourseDisplay courseDisplay;
+    private int student;
+    private int achieve;
 
 
-    public IncDecPanel(int i){
+    public IncDecPanel(int i, CourseDisplay courseDisplay, int s, int a){
         value = i;
+        student =s;
+        achieve = a;
 
+        this.courseDisplay = courseDisplay;
         this.setLayout(new GridLayout(1,2));
-        this.setBorder(BorderFactory.createEmptyBorder(2,2,2,2));
+        this.setBorder(BorderFactory.createEmptyBorder(4,4,4,4));
 
 
         JPanel buttonPanel = new JPanel();
@@ -35,8 +41,8 @@ public class IncDecPanel extends JPanel {
         //JButton plus = new JButton("+");
         //JButton minus = new JButton("-");
 
-        Dimension labelSize = new Dimension(32,32);
-        Dimension buttonSize = new Dimension(32,32);
+        Dimension labelSize = new Dimension(16,16);
+        Dimension buttonSize = new Dimension(16,16);
 
         jLabel.setPreferredSize(labelSize);
         plus.setPreferredSize(buttonSize);
