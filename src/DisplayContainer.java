@@ -17,16 +17,17 @@ public class DisplayContainer extends JFrame {
         this.setVisible(true);
         bigPanel = new JPanel();
 
-
+        courseData = theCourseData;
         currStart = 0;
 
-        maxIndex = theCourseData.getAchSize();
+
 
         if(theCourseData.getAchSize()<7){
             size = theCourseData.getAchSize();
         }else{
             size = 7;
         }
+        maxIndex = theCourseData.getAchSize()-size;
 
         courseDisplay = new CourseDisplay(theCourseData,0,size,this);
 
@@ -77,7 +78,32 @@ public class DisplayContainer extends JFrame {
 
             bigPanel = new JPanel();
 
-            courseDisplay = new CourseDisplay(new CourseData(1), currStart, currStart + size, this);
+            courseDisplay = new CourseDisplay(courseData, currStart, currStart + size, this);
+
+            JPanel headPanel = new JPanel();
+            headPanel.add(new JLabel("courseName"));
+            JPanel buttonPanel = new JPanel();
+            ImageIcon n = new ImageIcon("next.png");
+            ImageIcon p = new ImageIcon("previous.png");
+            buttonPanel.setLayout(new GridLayout(1, 2));
+            FieldListener fl = new FieldListener();
+            buttonPanel.add(previous);
+            buttonPanel.add(next);
+
+            headPanel.add(buttonPanel);
+
+            bigPanel.add(headPanel);
+            bigPanel.add(courseDisplay);
+            setContentPane(bigPanel);
+            validate();
+            this.pack();
+        }else{
+
+            currStart = maxIndex;
+
+            bigPanel = new JPanel();
+
+            courseDisplay = new CourseDisplay(courseData, currStart+1, maxIndex + size, this);
 
             JPanel headPanel = new JPanel();
             headPanel.add(new JLabel("courseName"));
