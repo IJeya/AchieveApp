@@ -63,10 +63,12 @@ public class IncDecPanel extends JPanel {
             if(e.getSource().equals(plus)){
                 value++;
                 jLabel.setText(String.valueOf(value));
+                courseDisplay.updateQuantity(student,achieve,value);
             }
             if(e.getSource().equals(minus)){
                 value--;
                 jLabel.setText(String.valueOf(value));
+                courseDisplay.updateQuantity(student,achieve,value);
             }
         }
     }

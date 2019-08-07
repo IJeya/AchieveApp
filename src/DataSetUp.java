@@ -15,7 +15,7 @@ public class DataSetUp {
 
 
 
-        File achieveFile = new File("C:\\Users\\jayiy\\Programming\\Projects\\AchievementManagingApp\\achievementDataTest.txt");
+        File achieveFile = new File("C:\\Users\\jayiy\\Programming\\Projects\\AchieveApp\\achievementDataTest.txt");
         PrintWriter achieveWriter = new PrintWriter(achieveFile);
 
         if(achieveFile.createNewFile()){
@@ -46,7 +46,7 @@ public class DataSetUp {
 
         achieveWriter.close();
 
-        File studentFile = new File("C:\\Users\\jayiy\\Programming\\Projects\\AchievementManagingApp\\studentDataTest.txt");
+        File studentFile = new File("C:\\Users\\jayiy\\Programming\\Projects\\AchieveApp\\studentDataTest.txt");
         PrintWriter studentWriter = new PrintWriter(studentFile);
 
         if(studentFile.createNewFile()){
@@ -55,7 +55,7 @@ public class DataSetUp {
             System.out.println("File already created");
         }
 
-        File courseFile = new File("C:\\Users\\jayiy\\Programming\\Projects\\AchievementManagingApp\\courseDataTest.txt");
+        File courseFile = new File("C:\\Users\\jayiy\\Programming\\Projects\\AchieveApp\\courseDataTest.txt");
         PrintWriter courseWriter = new PrintWriter(courseFile);
 
         if(courseFile.createNewFile()){

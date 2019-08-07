@@ -107,4 +107,9 @@ public class CourseDisplay extends JPanel {
             }
         }
     }
+
+    public void updateQuantity(int i, int j, int value){
+        int[][] data = courseData.getAchieveQuantities();
+        data[i][j] = value;
+    }
 }

@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class CourseData {
@@ -5,6 +6,8 @@ public class CourseData {
     private String[] names;
     private String[] achieves;
     private int[][] achieveQuantities;
+    private int achSize;
+
     CourseData(int placeholder){
         String courseName = "Course1";
         String[] names = {"Student1","Student2","Student3","Student4","Student5"};
@@ -22,19 +25,24 @@ public class CourseData {
         this.achieveQuantities = achieveQuantities;
     }
 
-    public CourseData(Course course){
+    public CourseData(Course course) throws IOException {
         courseName = course.getName();
         names = course.getStudentNames();
-        achieves = getAchieves();
+        achieves = DataGet.achievesGet();
 
         ArrayList<Student> slist = course.getStudentsInCourse();
 
         int[][] achQs = new int[names.length][achieves.length];
+
         for(int i = 0; i < names.length; i++){
             for(int j=0; j<achieves.length; j++){
                 achQs[i][j] = slist.get(i).getAchievements()[j].getQuantity();
             }
         }
+
+        achieveQuantities = achQs;
+        achSize = achieves.length;
+
     }
 
     public int[][] getAchieveQuantities() {
@@ -51,5 +59,9 @@ public class CourseData {
 
     public String[] getNames() {
         return names;
+    }
+
+    public int getAchSize() {
+        return achSize;
     }
 }

@@ -11,14 +11,24 @@ public class DisplayContainer extends JFrame {
     private CourseData courseData;
     private int size;
     private int currStart;
+    private int maxIndex;
 
-    public DisplayContainer(){
-        size = 7;
+    public DisplayContainer(CourseData theCourseData){
         this.setVisible(true);
         bigPanel = new JPanel();
 
-        courseDisplay = new CourseDisplay(new CourseData(1),0,size,this);
+
         currStart = 0;
+
+        maxIndex = theCourseData.getAchSize();
+
+        if(theCourseData.getAchSize()<7){
+            size = theCourseData.getAchSize();
+        }else{
+            size = 7;
+        }
+
+        courseDisplay = new CourseDisplay(theCourseData,0,size,this);
 
         JPanel headPanel = new JPanel();
         headPanel.add(new JLabel("courseName"));
@@ -59,30 +69,36 @@ public class DisplayContainer extends JFrame {
     }
 
     public void next(){
-        System.out.println("check");
+        //System.out.println("check");
 
-        currStart+=size;
+        if(currStart+size<maxIndex) {
 
-        bigPanel = new JPanel();
+            currStart += size;
 
-        courseDisplay = new CourseDisplay(new CourseData(1),currStart,9,this);
+            bigPanel = new JPanel();
 
-        JPanel headPanel = new JPanel();
-        headPanel.add(new JLabel("courseName"));
-        JPanel buttonPanel = new JPanel();
-        ImageIcon n = new ImageIcon("next.png");
-        ImageIcon p = new ImageIcon("previous.png");
-        buttonPanel.setLayout(new GridLayout(1,2));
-        FieldListener fl = new FieldListener();
-        buttonPanel.add(previous);
-        buttonPanel.add(next);
+            courseDisplay = new CourseDisplay(new CourseData(1), currStart, currStart + size, this);
 
-        headPanel.add(buttonPanel);
+            JPanel headPanel = new JPanel();
+            headPanel.add(new JLabel("courseName"));
+            JPanel buttonPanel = new JPanel();
+            ImageIcon n = new ImageIcon("next.png");
+            ImageIcon p = new ImageIcon("previous.png");
+            buttonPanel.setLayout(new GridLayout(1, 2));
+            FieldListener fl = new FieldListener();
+            buttonPanel.add(previous);
+            buttonPanel.add(next);
 
-        bigPanel.add(headPanel);
-        bigPanel.add(courseDisplay);
-        setContentPane(bigPanel);
-        validate();
-        this.pack();
+            headPanel.add(buttonPanel);
+
+            bigPanel.add(headPanel);
+            bigPanel.add(courseDisplay);
+            setContentPane(bigPanel);
+            validate();
+            this.pack();
+        }
+
+
+
     }
 }
