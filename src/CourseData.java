@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class CourseData {
     private String courseName;
     private String[] names;
@@ -18,6 +20,21 @@ public class CourseData {
         this.names = names;
         this.achieves = achieves;
         this.achieveQuantities = achieveQuantities;
+    }
+
+    public CourseData(Course course){
+        courseName = course.getName();
+        names = course.getStudentNames();
+        achieves = getAchieves();
+
+        ArrayList<Student> slist = course.getStudentsInCourse();
+
+        int[][] achQs = new int[names.length][achieves.length];
+        for(int i = 0; i < names.length; i++){
+            for(int j=0; j<achieves.length; j++){
+                achQs[i][j] = slist.get(i).getAchievements()[j].getQuantity();
+            }
+        }
     }
 
     public int[][] getAchieveQuantities() {

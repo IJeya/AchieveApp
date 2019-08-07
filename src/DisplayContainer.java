@@ -9,14 +9,16 @@ public class DisplayContainer extends JFrame {
     private JButton previous;
     private JPanel bigPanel;
     private CourseData courseData;
-
+    private int size;
+    private int currStart;
 
     public DisplayContainer(){
-
+        size = 7;
         this.setVisible(true);
         bigPanel = new JPanel();
 
-        courseDisplay = new CourseDisplay(new CourseData(1),0,4,this);
+        courseDisplay = new CourseDisplay(new CourseData(1),0,size,this);
+        currStart = 0;
 
         JPanel headPanel = new JPanel();
         headPanel.add(new JLabel("courseName"));
@@ -48,7 +50,7 @@ public class DisplayContainer extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             if(e.getSource().equals(next)){
-                change();
+                next();
             }
             if(e.getSource().equals(previous)){
 
@@ -56,12 +58,14 @@ public class DisplayContainer extends JFrame {
         }
     }
 
-    public void change(){
+    public void next(){
         System.out.println("check");
+
+        currStart+=size;
 
         bigPanel = new JPanel();
 
-        courseDisplay = new CourseDisplay(new CourseData(1),4,9,this);
+        courseDisplay = new CourseDisplay(new CourseData(1),currStart,9,this);
 
         JPanel headPanel = new JPanel();
         headPanel.add(new JLabel("courseName"));
