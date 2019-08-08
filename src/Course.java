@@ -51,4 +51,8 @@ public class Course { //contains the students in a certain course
     public String getName() {
         return name;
     }
+
+    public void updateStudentData(){
+        
+    }
 }
