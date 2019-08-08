@@ -9,9 +9,13 @@ public class CourseDisplay extends JPanel {
     private JButton previous;
     private JPanel gridPanel;
     private DisplayContainer container;
+    private JLabel[] jScoreLabels;
+
     public CourseDisplay(CourseData cData, int startA, int endA, DisplayContainer dc){
         courseData = cData;
         container=dc;
+
+
 
         String courseName = cData.getCourseName();
         String[] names = cData.getNames();
@@ -22,6 +26,8 @@ public class CourseDisplay extends JPanel {
         JPanel headPanel = new JPanel();
         gridPanel = new JPanel();
         gridPanel.setLayout(new GridLayout(names.length + 1,endA - startA+1));
+
+        jScoreLabels = new JLabel[names.length];
 
         gridPanel.add(new JLabel("Names"));
         for(int i = startA; i < endA; i++){
@@ -34,7 +40,9 @@ public class CourseDisplay extends JPanel {
             for(int j = startA; j < endA; j++){
                 gridPanel.add(new IncDecPanel(achieveQuantities[i][j],this,i,j));
             }
-            gridPanel.add(new JLabel(String.valueOf(courseData.getCourse().getStudentsInCourse().get(i).getPoints())));
+            JLabel jScoreLabel = new JLabel(String.valueOf(courseData.getCourse().getStudentsInCourse().get(i).getPoints()));
+            gridPanel.add(jScoreLabel);
+            jScoreLabels[i] = jScoreLabel;
         }
 
         this.add(gridPanel);
@@ -111,8 +119,10 @@ public class CourseDisplay extends JPanel {
     public void updateQuantity(int i, int j, int value){
         int[][] data = courseData.getAchieveQuantities();
         data[i][j] = value;
-        courseData.getCourse().getStudentsInCourse().get(i).getAchievements()[j].setQuantity(value);
-        courseData.getCourse().getStudentsInCourse().get(i).calculateScore();
+        Student student = courseData.getCourse().getStudentsInCourse().get(i);
+        student.getAchievements()[j].setQuantity(value);
+        student.calculateScore();
+        jScoreLabels[i].setText(String.valueOf(student.getPoints()));
     }
 
 

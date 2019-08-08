@@ -22,17 +22,17 @@ public class DisplayContainer extends JFrame {
 
 
 
-        if(theCourseData.getAchSize()<7){
+        if(theCourseData.getAchSize()<6){
             size = theCourseData.getAchSize();
         }else{
-            size = 7;
+            size = 6;
         }
-        maxIndex = theCourseData.getAchSize()-size;
+        maxIndex = theCourseData.getAchSize()-1;
 
         courseDisplay = new CourseDisplay(theCourseData,0,size,this);
 
         JPanel headPanel = new JPanel();
-        headPanel.add(new JLabel("courseName"));
+        headPanel.add(new JLabel(theCourseData.getCourseName()));
         JPanel buttonPanel = new JPanel();
         Dimension buttonSize = new Dimension(32,32);
 
@@ -45,7 +45,7 @@ public class DisplayContainer extends JFrame {
         previous = new JButton(p);
         next.addActionListener(fl);
         previous.addActionListener(fl);
-        buttonPanel.add(previous);
+        //buttonPanel.add(previous);
         buttonPanel.add(next);
 
         headPanel.add(buttonPanel);
@@ -70,9 +70,8 @@ public class DisplayContainer extends JFrame {
     }
 
     public void next(){
-        //System.out.println("check");
 
-        if(currStart+size<maxIndex) {
+        if(!(currStart+2*size > maxIndex)) {
 
             currStart += size;
 
@@ -81,12 +80,11 @@ public class DisplayContainer extends JFrame {
             courseDisplay = new CourseDisplay(courseData, currStart, currStart + size, this);
 
             JPanel headPanel = new JPanel();
-            headPanel.add(new JLabel("courseName"));
+            headPanel.add(new JLabel(courseData.getCourseName()));
             JPanel buttonPanel = new JPanel();
-            ImageIcon n = new ImageIcon("next.png");
-            ImageIcon p = new ImageIcon("previous.png");
+
             buttonPanel.setLayout(new GridLayout(1, 2));
-            FieldListener fl = new FieldListener();
+
             buttonPanel.add(previous);
             buttonPanel.add(next);
 
@@ -97,23 +95,23 @@ public class DisplayContainer extends JFrame {
             setContentPane(bigPanel);
             validate();
             this.pack();
+            System.out.println(currStart);
         }else{
 
-            currStart = maxIndex;
+            currStart+=size;
 
             bigPanel = new JPanel();
 
-            courseDisplay = new CourseDisplay(courseData, currStart+1, maxIndex + size, this);
+            courseDisplay = new CourseDisplay(courseData, currStart, maxIndex+1, this);
 
             JPanel headPanel = new JPanel();
-            headPanel.add(new JLabel("courseName"));
+            headPanel.add(new JLabel(courseData.getCourseName()));
             JPanel buttonPanel = new JPanel();
-            ImageIcon n = new ImageIcon("next.png");
-            ImageIcon p = new ImageIcon("previous.png");
+
             buttonPanel.setLayout(new GridLayout(1, 2));
-            FieldListener fl = new FieldListener();
+
             buttonPanel.add(previous);
-            buttonPanel.add(next);
+            //buttonPanel.add(next);
 
             headPanel.add(buttonPanel);
 
@@ -136,12 +134,11 @@ public class DisplayContainer extends JFrame {
             courseDisplay = new CourseDisplay(courseData, currStart, currStart + size, this);
 
             JPanel headPanel = new JPanel();
-            headPanel.add(new JLabel("courseName"));
+            headPanel.add(new JLabel(courseData.getCourseName()));
             JPanel buttonPanel = new JPanel();
-            ImageIcon n = new ImageIcon("next.png");
-            ImageIcon p = new ImageIcon("previous.png");
+
             buttonPanel.setLayout(new GridLayout(1, 2));
-            FieldListener fl = new FieldListener();
+
             buttonPanel.add(previous);
             buttonPanel.add(next);
 
@@ -159,13 +156,12 @@ public class DisplayContainer extends JFrame {
             courseDisplay = new CourseDisplay(courseData, currStart, currStart + size, this);
 
             JPanel headPanel = new JPanel();
-            headPanel.add(new JLabel("courseName"));
+            headPanel.add(new JLabel(courseData.getCourseName()));
             JPanel buttonPanel = new JPanel();
-            ImageIcon n = new ImageIcon("next.png");
-            ImageIcon p = new ImageIcon("previous.png");
+
             buttonPanel.setLayout(new GridLayout(1, 2));
-            FieldListener fl = new FieldListener();
-            buttonPanel.add(previous);
+
+            //buttonPanel.add(previous);
             buttonPanel.add(next);
 
             headPanel.add(buttonPanel);
@@ -177,4 +173,6 @@ public class DisplayContainer extends JFrame {
             this.pack();
         }
     } // wait this all works im actually L9
+
+
 }
