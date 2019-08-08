@@ -34,7 +34,7 @@ public class CourseDisplay extends JPanel {
             for(int j = startA; j < endA; j++){
                 gridPanel.add(new IncDecPanel(achieveQuantities[i][j],this,i,j));
             }
-            gridPanel.add(new JLabel("their score"));
+            gridPanel.add(new JLabel(String.valueOf(courseData.getCourse().getStudentsInCourse().get(i).getPoints())));
         }
 
         this.add(gridPanel);
@@ -111,5 +111,9 @@ public class CourseDisplay extends JPanel {
     public void updateQuantity(int i, int j, int value){
         int[][] data = courseData.getAchieveQuantities();
         data[i][j] = value;
+        courseData.getCourse().getStudentsInCourse().get(i).getAchievements()[j].setQuantity(value);
+        courseData.getCourse().getStudentsInCourse().get(i).calculateScore();
     }
+
+
 }

@@ -7,7 +7,7 @@ public class CourseData {
     private String[] achieves;
     private int[][] achieveQuantities;
     private int achSize;
-
+    private Course course;
     CourseData(int placeholder){
         String courseName = "Course1";
         String[] names = {"Student1","Student2","Student3","Student4","Student5"};
@@ -29,7 +29,7 @@ public class CourseData {
         courseName = course.getName();
         names = course.getStudentNames();
         achieves = DataGet.achievesGet();
-
+        this.course = course;
         ArrayList<Student> slist = course.getStudentsInCourse();
 
         int[][] achQs = new int[names.length][achieves.length];
@@ -63,5 +63,9 @@ public class CourseData {
 
     public int getAchSize() {
         return achSize;
+    }
+
+    public Course getCourse() {
+        return course;
     }
 }

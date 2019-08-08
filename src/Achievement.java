@@ -23,4 +23,8 @@ public class Achievement {
     public String toString() {
         return "Name: " + name + " Value: " + value;
     }
+
+    public void setQuantity(int i){
+        quantity = i;
+    }
 }

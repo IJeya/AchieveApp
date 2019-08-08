@@ -35,4 +35,15 @@ public class Student {
     public Achievement[] getAchievements() {
         return achievements;
     }
+
+    public void calculateScore(){
+        points = 0;
+        for(int i = 0; i<achievements.length; i++){ //goes through achievement array
+            points += achievements[i].getValue() * achievements[i].getQuantity(); //gives points based on that achieve's value
+        }
+    }
+
+    public int getPoints() {
+        return points;
+    }
 }

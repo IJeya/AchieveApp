@@ -64,7 +64,7 @@ public class DisplayContainer extends JFrame {
                 next();
             }
             if(e.getSource().equals(previous)){
-
+                previous();
             }
         }
     }
@@ -127,4 +127,54 @@ public class DisplayContainer extends JFrame {
 
 
     }
+
+    public void previous(){
+        if(currStart-size>0) {
+            currStart-=size;
+            bigPanel = new JPanel();
+
+            courseDisplay = new CourseDisplay(courseData, currStart, currStart + size, this);
+
+            JPanel headPanel = new JPanel();
+            headPanel.add(new JLabel("courseName"));
+            JPanel buttonPanel = new JPanel();
+            ImageIcon n = new ImageIcon("next.png");
+            ImageIcon p = new ImageIcon("previous.png");
+            buttonPanel.setLayout(new GridLayout(1, 2));
+            FieldListener fl = new FieldListener();
+            buttonPanel.add(previous);
+            buttonPanel.add(next);
+
+            headPanel.add(buttonPanel);
+
+            bigPanel.add(headPanel);
+            bigPanel.add(courseDisplay);
+            setContentPane(bigPanel);
+            validate();
+            this.pack();
+        }else{
+            currStart = 0;
+            bigPanel = new JPanel();
+
+            courseDisplay = new CourseDisplay(courseData, currStart, currStart + size, this);
+
+            JPanel headPanel = new JPanel();
+            headPanel.add(new JLabel("courseName"));
+            JPanel buttonPanel = new JPanel();
+            ImageIcon n = new ImageIcon("next.png");
+            ImageIcon p = new ImageIcon("previous.png");
+            buttonPanel.setLayout(new GridLayout(1, 2));
+            FieldListener fl = new FieldListener();
+            buttonPanel.add(previous);
+            buttonPanel.add(next);
+
+            headPanel.add(buttonPanel);
+
+            bigPanel.add(headPanel);
+            bigPanel.add(courseDisplay);
+            setContentPane(bigPanel);
+            validate();
+            this.pack();
+        }
+    } // wait this all works im actually L9
 }
