@@ -10,8 +10,6 @@ public class TestingRunner {
         DisplayContainer d = new DisplayContainer(new CourseData(course));
 
     }
-
-
 }
 
 

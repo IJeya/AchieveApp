@@ -12,20 +12,24 @@ public class DisplayContainer extends JFrame {
     private int size;
     private int currStart;
     private int maxIndex;
+    private JButton quit;
+
 
     public DisplayContainer(CourseData theCourseData){
         this.setVisible(true);
         bigPanel = new JPanel();
-
+        quit = new JButton("Quit");
         courseData = theCourseData;
         currStart = 0;
+        boolean small = false;
 
+        int whatSize = 6;
 
-
-        if(theCourseData.getAchSize()<6){
+        if(theCourseData.getAchSize()<whatSize){
             size = theCourseData.getAchSize();
         }else{
-            size = 6;
+            size = whatSize;
+            small =true;
         }
         maxIndex = theCourseData.getAchSize()-1;
 
@@ -45,9 +49,14 @@ public class DisplayContainer extends JFrame {
         previous = new JButton(p);
         next.addActionListener(fl);
         previous.addActionListener(fl);
+        quit.addActionListener(fl);
         //buttonPanel.add(previous);
-        buttonPanel.add(next);
 
+        if(small){
+            buttonPanel.add(next);
+        }
+
+        headPanel.add(quit);
         headPanel.add(buttonPanel);
 
         bigPanel.add(headPanel);
@@ -65,6 +74,9 @@ public class DisplayContainer extends JFrame {
             }
             if(e.getSource().equals(previous)){
                 previous();
+            }
+            if(e.getSource().equals(quit)){
+                quit();
             }
         }
     }
@@ -87,7 +99,7 @@ public class DisplayContainer extends JFrame {
 
             buttonPanel.add(previous);
             buttonPanel.add(next);
-
+            headPanel.add(quit);
             headPanel.add(buttonPanel);
 
             bigPanel.add(headPanel);
@@ -112,7 +124,7 @@ public class DisplayContainer extends JFrame {
 
             buttonPanel.add(previous);
             //buttonPanel.add(next);
-
+            headPanel.add(quit);
             headPanel.add(buttonPanel);
 
             bigPanel.add(headPanel);
@@ -141,7 +153,7 @@ public class DisplayContainer extends JFrame {
 
             buttonPanel.add(previous);
             buttonPanel.add(next);
-
+            headPanel.add(quit);
             headPanel.add(buttonPanel);
 
             bigPanel.add(headPanel);
@@ -163,7 +175,7 @@ public class DisplayContainer extends JFrame {
 
             //buttonPanel.add(previous);
             buttonPanel.add(next);
-
+            headPanel.add(quit);
             headPanel.add(buttonPanel);
 
             bigPanel.add(headPanel);
@@ -174,5 +186,9 @@ public class DisplayContainer extends JFrame {
         }
     } // wait this all works im actually L9
 
+    public void quit(){
+        courseData.getCourse();
+        System.exit(0);
+    }
 
 }
