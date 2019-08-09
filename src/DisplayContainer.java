@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+import static javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS;
+
 public class DisplayContainer extends JFrame {
     private JPanel courseDisplay;
     private JButton next;
@@ -18,7 +20,9 @@ public class DisplayContainer extends JFrame {
 
     public DisplayContainer(CourseData theCourseData){
         this.setVisible(true);
+        this.setSize(1200,700);
         bigPanel = new JPanel();
+        bigPanel.setLayout(new BorderLayout());
         quit = new JButton("Quit");
         courseData = theCourseData;
         currStart = 0;
@@ -60,11 +64,19 @@ public class DisplayContainer extends JFrame {
         headPanel.add(quit);
         headPanel.add(buttonPanel);
 
-        bigPanel.add(headPanel);
-        bigPanel.add(courseDisplay);
+        JScrollPane jScrollPane = new JScrollPane(courseDisplay);
+        jScrollPane.setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_ALWAYS);
 
+
+
+        headPanel.setSize(new Dimension(600,400));
+
+        bigPanel.add(headPanel,BorderLayout.PAGE_START);
+        bigPanel.add(jScrollPane,BorderLayout.CENTER);
+        //bigPanel.setSize(new Dimension(1200,500));
         this.add(bigPanel);
-        this.pack();
+        //this.pack();
+        this.setVisible(true);
     }
 
     private class FieldListener implements ActionListener {
@@ -90,10 +102,10 @@ public class DisplayContainer extends JFrame {
     public void next(){
 
         if(!(currStart+2*size > maxIndex)) {
-
+            this.setSize(1200,700);
             currStart += size;
 
-            bigPanel = new JPanel();
+            bigPanel = new JPanel();bigPanel.setLayout(new BorderLayout());
 
             courseDisplay = new CourseDisplay(courseData, currStart, currStart + size, this);
 
@@ -108,17 +120,24 @@ public class DisplayContainer extends JFrame {
             headPanel.add(quit);
             headPanel.add(buttonPanel);
 
-            bigPanel.add(headPanel);
-            bigPanel.add(courseDisplay);
+            JScrollPane jScrollPane = new JScrollPane(courseDisplay);
+            jScrollPane.setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_ALWAYS);
+
+
+
+            headPanel.setSize(new Dimension(600,400));
+
+            bigPanel.add(headPanel,BorderLayout.PAGE_START);
+            bigPanel.add(jScrollPane,BorderLayout.CENTER);
             setContentPane(bigPanel);
             validate();
-            this.pack();
+            //this.pack();
             System.out.println(currStart);
         }else{
-
+            this.setSize(1200,700);
             currStart+=size;
 
-            bigPanel = new JPanel();
+            bigPanel = new JPanel();bigPanel.setLayout(new BorderLayout());
 
             courseDisplay = new CourseDisplay(courseData, currStart, maxIndex+1, this);
 
@@ -133,11 +152,18 @@ public class DisplayContainer extends JFrame {
             headPanel.add(quit);
             headPanel.add(buttonPanel);
 
-            bigPanel.add(headPanel);
-            bigPanel.add(courseDisplay);
+            JScrollPane jScrollPane = new JScrollPane(courseDisplay);
+            jScrollPane.setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_ALWAYS);
+
+
+
+            headPanel.setSize(new Dimension(600,400));
+
+            bigPanel.add(headPanel,BorderLayout.PAGE_START);
+            bigPanel.add(jScrollPane,BorderLayout.CENTER);
             setContentPane(bigPanel);
             validate();
-            this.pack();
+            //this.pack();
         }
 
 
@@ -146,8 +172,9 @@ public class DisplayContainer extends JFrame {
 
     public void previous(){
         if(currStart-size>0) {
+            this.setSize(1200,700);
             currStart-=size;
-            bigPanel = new JPanel();
+            bigPanel = new JPanel();bigPanel.setLayout(new BorderLayout());
 
             courseDisplay = new CourseDisplay(courseData, currStart, currStart + size, this);
 
@@ -162,14 +189,22 @@ public class DisplayContainer extends JFrame {
             headPanel.add(quit);
             headPanel.add(buttonPanel);
 
-            bigPanel.add(headPanel);
-            bigPanel.add(courseDisplay);
+            JScrollPane jScrollPane = new JScrollPane(courseDisplay);
+            jScrollPane.setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_ALWAYS);
+
+
+
+            headPanel.setSize(new Dimension(600,400));
+
+            bigPanel.add(headPanel,BorderLayout.PAGE_START);
+            bigPanel.add(jScrollPane,BorderLayout.CENTER);
             setContentPane(bigPanel);
             validate();
-            this.pack();
+            //this.pack();
         }else{
+            this.setSize(1200,700);
             currStart = 0;
-            bigPanel = new JPanel();
+            bigPanel = new JPanel();bigPanel.setLayout(new BorderLayout());
 
             courseDisplay = new CourseDisplay(courseData, currStart, currStart + size, this);
 
@@ -184,11 +219,18 @@ public class DisplayContainer extends JFrame {
             headPanel.add(quit);
             headPanel.add(buttonPanel);
 
-            bigPanel.add(headPanel);
-            bigPanel.add(courseDisplay);
+            JScrollPane jScrollPane = new JScrollPane(courseDisplay);
+            jScrollPane.setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_ALWAYS);
+
+
+
+            headPanel.setSize(new Dimension(600,400));
+
+            bigPanel.add(headPanel,BorderLayout.PAGE_START);
+            bigPanel.add(jScrollPane,BorderLayout.CENTER);
             setContentPane(bigPanel);
             validate();
-            this.pack();
+            //this.pack();
         }
     } // wait this all works im actually L9
 

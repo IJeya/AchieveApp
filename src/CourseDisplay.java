@@ -25,13 +25,15 @@ public class CourseDisplay extends JPanel {
 
         JPanel headPanel = new JPanel();
         gridPanel = new JPanel();
-        gridPanel.setLayout(new GridLayout(names.length + 1,endA - startA+1));
+        gridPanel.setLayout(new GridLayout(names.length + 1,endA - startA+1,24,10));
 
         jScoreLabels = new JLabel[names.length];
 
         gridPanel.add(new JLabel("Names"));
         for(int i = startA; i < endA; i++){
-            gridPanel.add(new JLabel(achieves[i]));
+            JLabel jLabel = new JLabel(achieves[i]);
+            jLabel.setFont(new Font(jLabel.getFont().getFontName(),Font.PLAIN,10));
+            gridPanel.add(jLabel);
         }
         gridPanel.add(new JLabel( "Total Pts"));
 
