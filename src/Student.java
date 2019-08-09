@@ -46,4 +46,32 @@ public class Student {
     public int getPoints() {
         return points;
     }
+
+    public String forTextFile(){
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(name + " ");
+        for (int i = 0; i < achievements.length; i++){
+            sb.append(achievements[i].getQuantity() + " ");
+        }
+        sb.append("e ");
+
+        for (int i = 0; i<courses.length;i++){
+            if(i!=courses.length-1){
+                if(courses[i]){
+                    sb.append(1 + " ");
+                }else{
+                    sb.append(0 + " ");
+                }
+            }else{
+                if(courses[i]){
+                    sb.append(1);
+                }else{
+                    sb.append(0);
+                }
+            }
+        }
+
+        return sb.toString();
+    }
 }

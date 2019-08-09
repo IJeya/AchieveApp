@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class DisplayContainer extends JFrame {
     private JPanel courseDisplay;
@@ -76,7 +77,12 @@ public class DisplayContainer extends JFrame {
                 previous();
             }
             if(e.getSource().equals(quit)){
-                quit();
+                try{
+                    quit();
+                    System.out.println("in try");
+                }catch (Exception ok){
+                    System.out.println("ok");
+                }
             }
         }
     }
@@ -186,8 +192,8 @@ public class DisplayContainer extends JFrame {
         }
     } // wait this all works im actually L9
 
-    public void quit(){
-        courseData.getCourse();
+    public void quit() throws IOException {
+        courseData.getCourse().getStudentList().saveToFile();
         System.exit(0);
     }
 

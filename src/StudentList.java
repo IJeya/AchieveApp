@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -112,5 +113,17 @@ public class StudentList {
 
     public int getNumAchives(){
         return numAchives;
+    }
+
+    public void saveToFile() throws IOException{
+        File file = new File("C:\\Users\\jayiy\\Programming\\Projects\\AchieveApp\\studentDataTest.txt");
+        file.delete();
+        file.createNewFile();
+        PrintWriter printWriter = new PrintWriter(file);
+        for(int i = 0; i<studentArrayList.size()-1; i++){
+            printWriter.println(studentArrayList.get(i).forTextFile());
+        }
+        printWriter.print(studentArrayList.get(studentArrayList.size()-1).forTextFile());
+        printWriter.close();
     }
 }

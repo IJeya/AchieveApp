@@ -53,6 +53,6 @@ public class Course { //contains the students in a certain course
     }
 
     public void updateStudentData(){
-        
+
     }
 }
