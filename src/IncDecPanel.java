@@ -66,6 +66,9 @@ public class IncDecPanel extends JPanel {
                 courseDisplay.updateQuantity(student,achieve,value);
             }
             if(e.getSource().equals(minus)){
+                if(value==0){
+                    return;
+                }
                 value--;
                 jLabel.setText(String.valueOf(value));
                 courseDisplay.updateQuantity(student,achieve,value);

@@ -31,7 +31,11 @@ public class CourseDisplay extends JPanel {
 
         gridPanel.add(new JLabel("Names"));
         for(int i = startA; i < endA; i++){
-            JLabel jLabel = new JLabel(achieves[i]);
+            JLabel jLabel = new JLabel();
+            jLabel.setMinimumSize(new Dimension(60,20));
+            jLabel.setPreferredSize(new Dimension(60,20));
+            jLabel.setMaximumSize(new Dimension(60,20));
+            jLabel.setText(achieves[i]);
             jLabel.setFont(new Font(jLabel.getFont().getFontName(),Font.PLAIN,10));
             gridPanel.add(jLabel);
         }
@@ -119,6 +123,10 @@ public class CourseDisplay extends JPanel {
     }
 
     public void updateQuantity(int i, int j, int value){
+        if (value<0){
+            return;
+        }
+
         int[][] data = courseData.getAchieveQuantities();
         data[i][j] = value;
         Student student = courseData.getCourse().getStudentsInCourse().get(i);

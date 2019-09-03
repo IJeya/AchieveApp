@@ -2,6 +2,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class StudentList {
@@ -125,5 +127,9 @@ public class StudentList {
         }
         printWriter.print(studentArrayList.get(studentArrayList.size()-1).forTextFile());
         printWriter.close();
+    }
+
+    public void Alphabetize(){
+        //do alphabetize code next
     }
 }

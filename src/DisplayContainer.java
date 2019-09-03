@@ -16,11 +16,13 @@ public class DisplayContainer extends JFrame {
     private int currStart;
     private int maxIndex;
     private JButton quit;
-
+    private int width, height;
 
     public DisplayContainer(CourseData theCourseData){
         this.setVisible(true);
-        this.setSize(1200,700);
+        width = 1200;
+        height = 700;
+        this.setSize(width,height);
         bigPanel = new JPanel();
         bigPanel.setLayout(new BorderLayout());
         quit = new JButton("Quit");
@@ -102,7 +104,7 @@ public class DisplayContainer extends JFrame {
     public void next(){
 
         if(!(currStart+2*size > maxIndex)) {
-            this.setSize(1200,700);
+            this.setSize(width,height);
             currStart += size;
 
             bigPanel = new JPanel();bigPanel.setLayout(new BorderLayout());
@@ -134,7 +136,7 @@ public class DisplayContainer extends JFrame {
             //this.pack();
             System.out.println(currStart);
         }else{
-            this.setSize(1200,700);
+            this.setSize(width,height);
             currStart+=size;
 
             bigPanel = new JPanel();bigPanel.setLayout(new BorderLayout());
@@ -172,7 +174,7 @@ public class DisplayContainer extends JFrame {
 
     public void previous(){
         if(currStart-size>0) {
-            this.setSize(1200,700);
+            this.setSize(width,height);
             currStart-=size;
             bigPanel = new JPanel();bigPanel.setLayout(new BorderLayout());
 
@@ -202,7 +204,7 @@ public class DisplayContainer extends JFrame {
             validate();
             //this.pack();
         }else{
-            this.setSize(1200,700);
+            this.setSize(width,height);
             currStart = 0;
             bigPanel = new JPanel();bigPanel.setLayout(new BorderLayout());
 
