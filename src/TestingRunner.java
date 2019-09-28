@@ -8,7 +8,6 @@ public class TestingRunner {
         Course course = new Course(testSL, "Class", 0);
         System.out.println(course.getStudentsInCourse());
         DisplayContainer d = new DisplayContainer(new CourseData(course));
-
     }
 }
 

@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 
 public class IncDecPanel extends JPanel {
     private int value;
-    private JLabel jLabel;
+    private JTextField jTextField;
     private JButton plus;
     private JButton minus;
     private CourseDisplay courseDisplay;
@@ -33,7 +33,7 @@ public class IncDecPanel extends JPanel {
 
         ImageIcon p = new ImageIcon("plus.png");
         ImageIcon m = new ImageIcon("minus.png");
-        jLabel = new JLabel(String.valueOf(value));
+        jTextField = new JTextField(String.valueOf(value));
 
 
         plus = new JButton(p);
@@ -44,17 +44,18 @@ public class IncDecPanel extends JPanel {
         Dimension labelSize = new Dimension(16,16);
         Dimension buttonSize = new Dimension(16,16);
 
-        jLabel.setPreferredSize(labelSize);
+        jTextField.setPreferredSize(labelSize);
         plus.setPreferredSize(buttonSize);
         minus.setPreferredSize(buttonSize);
 
+        jTextField.addActionListener(fl);
         plus.addActionListener(fl);
         minus.addActionListener(fl);
 
         buttonPanel.add(plus);
         buttonPanel.add(minus);
         this.add(buttonPanel);
-        this.add(jLabel);
+        this.add(jTextField);
 
     }
     private class FieldListener implements ActionListener {
@@ -62,7 +63,7 @@ public class IncDecPanel extends JPanel {
         public void actionPerformed(ActionEvent e) {
             if(e.getSource().equals(plus)){
                 value++;
-                jLabel.setText(String.valueOf(value));
+                jTextField.setText(String.valueOf(value));
                 courseDisplay.updateQuantity(student,achieve,value);
             }
             if(e.getSource().equals(minus)){
@@ -70,8 +71,16 @@ public class IncDecPanel extends JPanel {
                     return;
                 }
                 value--;
-                jLabel.setText(String.valueOf(value));
+                jTextField.setText(String.valueOf(value));
                 courseDisplay.updateQuantity(student,achieve,value);
+            }
+            if(e.getSource().equals(jTextField)){
+                try{
+                    value = Integer.valueOf(jTextField.getText());
+                    courseDisplay.updateQuantity(student,achieve,value);
+                }catch (Exception e2){
+                    jTextField.setText(String.valueOf(value));
+                }
             }
         }
     }
