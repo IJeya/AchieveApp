@@ -20,4 +20,20 @@ public class DataGet {
         }
         return strArr;
     }
+    public static String[] coursesGet(String fileName) throws IOException{
+        File courseFile = new File(fileName);
+        Scanner sc = new Scanner(courseFile);
+        ArrayList<String> tempList = new ArrayList<>();
+        while(sc.hasNextLine()){
+            tempList.add(sc.next());
+            if(sc.hasNextLine()){
+                sc.nextLine();
+            }
+        }
+        String[] corArr = new String[tempList.size()];
+        for(int i = 0 ; i< tempList.size(); i++){
+            corArr[i] = tempList.get(i);
+        }
+        return corArr;
+    }
 }
