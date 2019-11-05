@@ -238,7 +238,9 @@ public class DisplayContainer extends JFrame {
 
     public void quit() throws IOException {
         courseData.getCourse().getStudentList().saveToFile();
-        System.exit(0);
+        //System.exit(0);
+        CourseSelect courseSelect = new CourseSelect(CourseSelect.CurrentCDFN(), CourseSelect.CurrentSL());
+        this.setVisible(false);
     }
 
 }
