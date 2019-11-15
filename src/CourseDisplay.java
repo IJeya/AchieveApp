@@ -105,8 +105,10 @@ public class CourseDisplay extends JPanel {
 
         this.add(headPanel);
 
-         */
+
         this.add(gridPanel);
+        */
+
     }
 
     private class FieldListener implements ActionListener {

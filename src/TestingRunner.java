@@ -8,6 +8,7 @@ public class TestingRunner {
         //Course course = new Course(testSL, "Class", 0);
         //System.out.println(course.getStudentsInCourse());
         //DisplayContainer d = new DisplayContainer(new CourseData(course));
+        System.out.println(Math.random());
         CourseSelect courseSelect = new CourseSelect("C:\\Users\\jayiy\\Programming\\Projects\\AchieveApp\\courseDataTest.txt", testSL);
     }
 }

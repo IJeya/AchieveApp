@@ -8,7 +8,7 @@ public class CourseData {
     private int[][] achieveQuantities;
     private int achSize;
     private Course course;
-    CourseData(int placeholder){
+    /*CourseData(int placeholder){
         String courseName = "Course1";
         String[] names = {"Student1","Student2","Student3","Student4","Student5"};
         String[] achieves = {"Achieve1","Achieve2","Achieve3","Achieve4","Achieve5","Achieve6","Achieve7","Achieve8","Achieve9"};
@@ -23,7 +23,7 @@ public class CourseData {
         this.names = names;
         this.achieves = achieves;
         this.achieveQuantities = achieveQuantities;
-    }
+    }*/
 
     public CourseData(Course course) throws IOException {
         courseName = course.getName();
